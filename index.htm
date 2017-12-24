@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>The 12 Days of Christmas in JavaScript - By Dan Guinn</title>
+    <style media="screen">
+      body{
+        background-color: green;
+        color:#fff;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>The 12 Days of Christmas in JavaScript</h1>
+    <p>For Christmas 2017 I made a Christmas card with a simple loop for "We wish you a Merry Christmas!"<br>
+      Then my coworker suggested I write one for the 12 Days of Christmas. What an obvious choice! <br>
+      After I coded it my way I looked around and there are a few others out there. So it seems that it is<br>
+      an obvious and fun casual excercise to be used for students and applicants alike!<br>
+      Here is my quick and consise take on it in JavaScript. Enjoy! </p>
+    <div id="Christmas"></div>
+
+    <script type="text/javascript">
+        var daysOfChristmas=11;
+        var lyric="";
+        var gifts = [
+            "A Partridge in a Pear Tree",
+            "Two Turtle Doves",
+            "Three French Hens",
+            "Four Calling Birds",
+            "Five Gold Rings",
+            "Six Geese a-Laying",
+            "Seven Swans a-Swimming",
+            "Eight Maids a-Milking",
+            "Nine Ladies Dancing",
+            "Ten Lords a-Leaping",
+            "Eleven Pipers Piping",
+            "Twelve Drummers Drumming"
+        ];
+        var giftsRec="";
+
+        var christmas = document.getElementById("Christmas");
+
+        for(i=0; i<=daysOfChristmas; i++)
+        {
+            dayNum=i+1;
+            if(i==0){
+              sep=".";
+            }else if(i==1){
+              sep=" and ";
+            }else{
+              sep=", ";
+            }
+            giftsRec = gifts[i] + sep + giftsRec;
+            lyric = "<p>On the " + getGetOrdinalSuffix(dayNum) + " day of Christmas my true love gave to me... <br>"
+            + giftsRec + "</p><br>";
+            //console.log(lyric);
+            christmas.innerHTML += lyric;
+
+        }
+
+        function getGetOrdinalSuffix(n) {
+          var s=["th","st","nd","rd"],
+          v=n%100;
+          return n+(s[(v-20)%10]||s[v]||s[0]);
+       }
+
+    </script>
+  </body>
+</html>
